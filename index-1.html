@@ -1,0 +1,50 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<p>Handwritten Text Recognition (HTR) system implemented using Pytorch and trained on the Bentham/IAM/Rimes/Saint Gall/Washington offline HTR datasets. This Neural Network model recognizes the text contained in the images of segmented texts lines.</p>
+<p>Data pre-processing is totally based on this awesome repository of <a href="https://github.com/arthurflor23/handwritten-text-recognition">handwritten text recognition</a>.
+Data partitioning (train, validation, test) was performed by following the methodology of each dataset. </p>
+<p>Model building is done using the transformer architecture. 
+Recentely facebook research realeased a <a href="https://github.com/facebookresearch/detr">paper</a> where, they used transformer for object detection. I made few changes to their model so that it could be run on text recognition.</p>
+<h2 id="tutorial-google-colabdrive">Tutorial (Google Colab/Drive)</h2>
+<p>A Jupyter Notebook is available for demo, check out the <strong><a href="https://colab.research.google.com/drive/1rCPaksWk7SAH4crOVYVzUaWsKbz2i3jE?authuser=1#scrollTo=rQew0_CkacDU">tutorial</a></strong> on Google Colab/Drive.</p>
+<h2 id="datasets-supported">Datasets supported</h2>
+<p>a. <a href="http://transcriptorium.eu/datasets/bentham-collection/">Bentham</a></p>
+<p>b. <a href="http://www.fki.inf.unibe.ch/databases/iam-handwriting-database">IAM</a></p>
+<p>c. <a href="http://www.a2ialab.com/doku.php?id=rimes_database:start">Rimes</a></p>
+<p>d. <a href="http://www.fki.inf.unibe.ch/databases/iam-historical-document-database/saint-gall-database">Saint Gall</a></p>
+<p>e. <a href="http://www.fki.inf.unibe.ch/databases/iam-historical-document-database/washington-database">Washington</a></p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>OpenCV 4.x</li>
+<li>editdistance</li>
+<li>Pytorch 1.x</li>
+</ul>
+<h2 id="command-line-arguments">Command line arguments</h2>
+<ul>
+<li><code>--source</code>: dataset/model name (bentham, iam, rimes, saintgall, washington)</li>
+<li><code>--transform</code>: transform dataset to the HDF5 file</li>
+<li><code>--image</code>: prediction on a single image with the source parameter</li>
+<li><code>--train</code>: train model using the source argument</li>
+<li><code>--test</code>: evaluate and predict model using the source argument</li>
+<li><code>--norm_accentuation</code>: discard accentuation marks in the evaluation</li>
+<li><code>--norm_punctuation</code>: discard punctuation marks in the evaluation</li>
+<li><code>--epochs</code>: number of epochs</li>
+<li><code>--batch_size</code>: number of the size of each batch</li>
+<li><code>--lr</code>: Learning rate</li>
+</ul>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li>Model used is from DETR(facebook research) notebook but in there paper they perfromed few more steps.</li>
+<li>For improving the results few more things can be done:<ul>
+<li>Using the warmup steps</li>
+<li>Using sine positional encodings for image vector.</li>
+<li>Trying more FC layers before output.</li>
+<li>Trying different parameters of Transformer.</li>
+<li>Trying different backbone model for getting feature vector of image.</li>
+</ul>
+</li>
+<li>Training took ~20 hrs on google colab. where as <a href="https://github.com/arthurflor23/handwritten-text-recognition">arthurflor</a> model can be trained in ~8hrs.</li>
+<li>Word error rate is 15% less when compared to Arthur's model on bentham dataset.</li>
+<li>Purpose of this project was to showcase the power of Transformer ie: You can use them anywhere.</li>
+</ul>
+</body></html>
